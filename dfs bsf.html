@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DFS & BFS Visualizer</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin: 30px;
+        }
+
+        input,
+        button,
+        select {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+
+
+        .container {
+            width: 800px;
+            height: 500px;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+            background-size: cover;
+            background-color: #96aad1;
+            border: 2px solid #333;
+            border-radius: 20px;
+            margin-left: 500px;
+            margin-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>DFS & BFS </h1>
+
+
+        <div>
+            <input id="from" type="number" placeholder="From" />
+            <input id="to" type="number" placeholder="To" />
+            <button onclick="addEdge()">Add Edge</button>
+        </div>
+
+        <div>
+            <input id="start" type="number" placeholder="Start Node" />
+            <select id="algo">
+                <option value="dfs">DFS</option>
+                <option value="bfs">BFS</option>
+            </select>
+            <button onclick="run()">Run</button>
+        </div>
+
+        <div class="result" id="output">output : </div>
+
+        <script>
+            const graph = {};
+
+
+            function addEdge() {
+                const from = parseInt(document.getElementById("from").value);
+                const to = parseInt(document.getElementById("to").value);
+                if (!graph[from]) graph[from] = [];
+                if (!graph[to]) graph[to] = [];
+                graph[from].push(to);
+                graph[to].push(from); // undirected
+                alert("Edge added: " + from + " - " + to);
+            }
+
+            function dfs(start, visited = new Set(), result = []) {
+                visited.add(start);
+                result.push(start);
+                for (let neighbor of graph[start]) {
+                    if (!visited.has(neighbor)) {
+                        dfs(neighbor, visited, result);
+                    }
+                }
+                return result;
+            }
+
+            function bfs(start) {
+                const visited = new Set();
+                const queue = [start];
+                const result = [];
+                visited.add(start);
+                while (queue.length > 0) {
+                    const node = queue.shift();
+                    result.push(node);
+                    for (let neighbor of graph[node]) {
+                        if (!visited.has(neighbor)) {
+                            visited.add(neighbor);
+                            queue.push(neighbor);
+                        }
+                    }
+                }
+                return result;
+            }
+
+            function run() {
+                const start = parseInt(document.getElementById("start").value);
+                const algo = document.getElementById("algo").value;
+                let result = [];
+                if (!graph[start]) {
+                    document.getElementById("output").innerText = "Start node not found!";
+                    return;
+                }
+                if (algo === "dfs") result = dfs(start);
+                else result = bfs(start);
+                document.getElementById("output").innerText = "Traversal: " + result.join(" → ");
+            }
+        </script>
+    </div>
+</body>
+
+</html>
