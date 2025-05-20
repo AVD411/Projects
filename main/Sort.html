@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SORT</title>
+    <style>
+    .container{
+    width: 800px;
+    height: 500px;
+    align-content: center;
+    text-align: center;
+    background-size: cover;
+    background-color: #cadcff;
+    border: 2px solid #333;
+    border-radius: 20px;
+    margin-left: 500px;
+    margin-top: 200px;
+    }
+    .button {
+        background-color: #04AA6D;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+        function hw()
+        {
+            var msg;
+            var numbers=[document.getElementById("number1").value,document.getElementById("number2").value,document.getElementById("number3").value,document.getElementById("number4").value,document.getElementById("number5").value]
+            
+            for (var i = 0; i < numbers.length; i++) {
+                numbers[i] = parseFloat(numbers[i]);
+            }
+
+
+            for(var i=0;i<5;i++)
+            {
+                for(var j=i;j<5;j++)
+                {
+                    if(numbers[i]>numbers[j])
+                    {
+                        var temp=numbers[i];
+                        numbers[i]=numbers[j];
+                        numbers[j]=temp;
+                    }
+                }
+            }
+            msg="2 - hello world"
+            document.getElementById("my element").innerHTML=numbers;
+        }
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <label > number 1 = </label>
+    <input type="text" id="number1"><br><br>
+    <label > number 2 = </label>
+    <input type="text" id="number2"><br><br>
+    <label > number 3 = </label>
+    <input type="text" id="number3"><br><br>
+    <label > number 4 = </label>
+    <input type="text" id="number4"><br><br>
+    <label > number 5 = </label>
+    <input type="text" id="number5"><br><br>
+    
+    <button class = "button" onclick="hw()">
+        click hear to sort</button>
+
+    <div  id="my element"></div>
+
+</div>
+
+<script>
+    var msg;
+    msg="hello world";
+    document.getElementById("element").innerHTML=msg;
+</script>
+</body>
+
+</html>

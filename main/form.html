@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+    .container{
+    width: 800px;
+    height: 500px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    background-size: cover;
+    background-color: #cadcff;
+    border: 2px solid #333;
+    border-radius: 20px;
+    margin-left: 500px;
+    margin-top: 200px;
+    }
+    
+    </style>
+
+    <script>
+        function hw()
+        {
+            var id;
+            id = document.getElementById("userid").value;
+            var password;
+            password =  document.getElementById("password").value;
+            if(id=="varad")
+            {
+                if(password=="WT")
+                {
+                    alert("Credential matched")
+                }
+                else{
+                    alert("Wrong password")
+                }
+            }
+            else{
+                alert("Wrong user id")
+            }
+            var msg;
+            msg="hello"+id;
+            document.getElementById("my element").innerHTML=id;
+        }
+    </script>
+</head>
+
+<body>
+   
+<div class="container">
+    
+    <form name="validation form"  onsubmit="hw()" >
+        <div  id="my element"></div>
+        <label > user id = </label>
+        <input type="text" id="userid"><br><br>
+        <label > password = </label>
+        <input type="text" id="password"><br><br><br>
+        <button type="submit">click here</button>
+    </form>
+    <div  id="my element"></div>
+    
+    <!-- <div id="my element"></div>
+    <button  onclick="hw()">
+        click hear</button> -->
+
+</div>
+<p id="my element"></p>
+
+<script>
+    var msg;
+    msg="hello world";
+    document.getElementById("element").innerHTML=msg;
+</script>
+</body>
+
+</html>

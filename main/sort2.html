@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SORT</title>
+    <style>
+    .container{
+    width: 800px;
+    height: 500px;
+    align-content: center;
+    text-align: center;
+    background-size: cover;
+    background-color: #cadcff;
+    border: 2px solid #333;
+    border-radius: 20px;
+    margin-left: 500px;
+    margin-top: 200px;
+    }
+    .button {
+        background-color: #04AA6D;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+
+        var j=1;
+        function input()
+        {
+            var num = document.getElementById("num").value;
+            for (var i=0;i<num;i++)
+            {
+                var label = ` <label for="${j}"> number ${j} = </label>
+                            <input type="text" id="${j}" ><br><br>`;
+
+                document.getElementById("main").innerHTML += label;
+                j++;
+            }
+        }
+
+        function hw()
+        {
+            var msg;
+            var numbers=[];
+            for(var i=1;i<j;i++)
+            {
+                var num = document.getElementById(i).value;
+                numbers.push(parseFloat(num));
+            }
+
+
+            for(var i=0;i<j;i++)
+            {
+                for(var k=i+1;k<j;k++)
+                {
+                    if(numbers[i]>numbers[k])
+                    {
+                        var temp=numbers[i];
+                        numbers[i]=numbers[k];
+                        numbers[k]=temp;
+                    }
+                }
+            }
+            msg="2 - hello world"
+            document.getElementById("myelement").innerHTML=numbers;
+        }
+    </script>
+</head>
+
+<body>
+<div class="container">
+
+        <label for="num"> Enter the number of elements to be sorted  = </label>
+        <input type="text" id="num">
+        <button onclick="input()">submit</button>
+
+    <div id="main">
+    </div>  
+
+    
+    <button class = "button" onclick="hw()">
+        click hear to sort</button>
+
+    <div  id="myelement"></div>
+
+</div>
+
+<script>
+    var msg;
+    msg="hello world";
+    document.getElementById("element").innerHTML=msg;
+</script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SORT</title>
+    <style>
+    .container{
+    width: 800px;
+    height: 500px;
+    align-content: center;
+    text-align: center;
+    background-size: cover;
+    background-color: #cadcff;
+    border: 2px solid #333;
+    border-radius: 20px;
+    margin-left: 500px;
+    margin-top: 200px;
+    }
+    .button {
+        background-color: #04AA6D;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+        function generateInputs() {
+            var numCount = document.getElementById("numCount").value;
+            var container = document.getElementById("inputFields");
+            container.innerHTML = ''; // Clear any existing input fields
+
+            // Create the required number of input fields dynamically
+            for (var i = 1; i <= numCount; i++) {
+                var label = document.createElement("label");
+                label.innerText = "Number " + i + " = ";
+                var input = document.createElement("input");
+                input.type = "text";
+                input.id = "number" + i;
+                container.appendChild(label);
+                container.appendChild(input);
+                container.appendChild(document.createElement("br"));
+                container.appendChild(document.createElement("br"));
+            }
+            // Add a button to trigger sorting
+            var button = document.createElement("button");
+            button.className = "button";
+            button.innerText = "Click here to sort";
+            button.onclick = sortNumbers;
+            container.appendChild(button);
+        }
+
+        function sortNumbers() {
+            var numCount = document.getElementById("numCount").value;
+            var numbers = [];
+
+            // Collect the input values
+            for (var i = 1; i <= numCount; i++) {
+                var num = document.getElementById("number" + i).value;
+                numbers.push(parseFloat(num));
+            }
+
+            // Bubble sort the numbers
+            for (var i = 0; i < numCount; i++) {
+                for (var j = i + 1; j < numCount; j++) {
+                    if (numbers[i] > numbers[j]) {
+                        var temp = numbers[i];
+                        numbers[i] = numbers[j];
+                        numbers[j] = temp;
+                    }
+                }
+            }
+
+            // Display the sorted numbers
+            document.getElementById("myElement").innerHTML = "Sorted numbers: " + numbers.join(", ");
+        }
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <label>How many numbers do you want to sort? </label>
+    <input type="number" id="numCount" min="1" oninput="generateInputs()"><br><br>
+    
+    <div id="inputFields"></div>
+
+    <div id="myElement"></div>
+</div>
+</body>
+</html>

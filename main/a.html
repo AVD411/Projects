@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+    .container{
+    width: 800px;
+    height: 500px;
+    align-content: center;
+    text-align: center;
+    background-size: cover;
+    background-color: #cadcff;
+    border: 2px solid #333;
+    border-radius: 20px;
+    margin-left: 500px;
+    margin-top: 200px;
+    }
+    <!-- .button {
+        background-color: #04AA6D;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      } -->
+    </style>
+
+    <script>
+        function hw()
+        {
+            var msg;
+            msg="2 - hello world"
+            document.getElementById("my element").innerHTML=msg;
+        }
+    </script>
+</head>
+
+<body>
+    <!-- <style>
+        .container:hover {transform: translateX(10px);
+        transition-delay: 0.1s;
+        }
+    </style> -->
+<div class="container">
+    <div id="my element"></div>
+    <button  onclick="hw()">
+        click hear</button>
+
+</div>
+
+<script>
+    var msg;
+    msg="hello world";
+    document.getElementById("element").innerHTML=msg;
+</script>
+</body>
+
+</html>
